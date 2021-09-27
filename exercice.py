@@ -4,21 +4,38 @@
 
 def order(values: list = None) -> list:
     if values is None:
+        valeur = []
         # TODO: demander les valeurs ici
-        pass
+        for i in range (0,11):
+            valeur.append(input(f"Entrer une valeur  : "))
+        valeur.sort()
 
-    return []
+    return valeur
 
 
 def anagrams(words: list = None) -> bool:
     if words is None:
         # TODO: demander les mots ici
-        pass
-
-    return False
+        mot_1 = input(str("Entrez le premier mot:"))
+        mot_2 = input(str("Entrez le deuxième mot:"))
+        l1 = []
+        l2 = []
+        for lettre in mot_1 :
+            l1.append(lettre)
+        l1.sort()
+        for lettre in mot_2 :
+            l2.append(lettre)
+        l2.sort()
+    if l1 == l2:
+        return True
+    else :
+        return False
 
 
 def contains_doubles(items: list) -> bool:
+    for i in items:
+        if items.count(i) != 1 :
+            return True
     return False
 
 
@@ -49,7 +66,7 @@ def main() -> None:
     order()
 
     print(f"On vérifie les anagrammes...")
-    anagrams()
+    print(anagrams())
 
     my_list = [3, 3, 5, 6, 1, 1]
     print(f"Ma liste contient-elle des doublons? {contains_doubles(my_list)}")
