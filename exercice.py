@@ -41,24 +41,48 @@ def contains_doubles(items: list) -> bool:
 
 def best_grades(student_grades: dict) -> dict:
     # TODO: Retourner un dictionnaire contenant le nom de l'étudiant ayant la meilleure moyenne ainsi que sa moyenne
-    return {}
+    dictionnaire_moyenne= {}
+    for clés,liste_notes in student_grades.items():
+        notes_total=0
+        for notes in liste_notes:
+            notes_total += notes
+        moyenne = notes_total/len(liste_notes)
+        dictionnaire_moyenne[clés] = moyenne
+    return dictionnaire_moyenne
 
 
 def frequence(sentence: str) -> dict:
     # TODO: Afficher les lettres les plus fréquentes
     #       Retourner le tableau de lettres
-
-    return {}
+    liste_lettre=[]
+    tableau_lettre=[]
+    lettre_comptee=[]
+    for lettre in sentence:
+        liste_lettre.append(lettre)
+    for character in liste_lettre:
+        if liste_lettre.count(character) > 5 :
+            if character not in lettre_comptee:
+              tableau_lettre.append(liste_lettre.count(character))
+              lettre_comptee.append (character)
+    tableau_lettre.sort()
+    tableau_lettre.reverse()
+    return tableau_lettre
 
 
 def get_recipes():
     # TODO: Demander le nom d'une recette, puis ses ingredients et enregistrer dans une structure de données
-    pass
+    dictionaire_recettes = {}
+    nom = input("Entrer le nom d'une recette: ")
+    ingredients = input("Entrer tous les ingredients: ")
+    dictionaire_recettes[nom] = ingredients
+    return dictionaire_recettes
 
 
 def print_recipe(ingredients) -> None:
     # TODO: Demander le nom d'une recette, puis l'afficher si elle existe
-    pass
+    nom = input("Entrer le nom d'une recette: ")
+    if nom in ingredients :
+        return ingredients
 
 
 def main() -> None:
@@ -66,7 +90,7 @@ def main() -> None:
     order()
 
     print(f"On vérifie les anagrammes...")
-    print(anagrams())
+    anagrams()
 
     my_list = [3, 3, 5, 6, 1, 1]
     print(f"Ma liste contient-elle des doublons? {contains_doubles(my_list)}")
